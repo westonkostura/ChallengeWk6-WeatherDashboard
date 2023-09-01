@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./Assets/reset.css">
+    <link rel="stylesheet" href="./Assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav>
+        <h1 class="header">WEATHER DASHBOARD☁️</h1>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="search col-3 d-flex flex-column">
+                <h2 class="searchHeader">Search for a City:</h2>
+                <input type="text" placeholder="San Diego" id="search">
+                <button class="btn btn-primary" id="searchButton">Search</button>
+                <hr>
+                <button class="btn btn-secondary" value="atlanta">Atlanta</button>
+                <button class="btn btn-secondary" value="denver">Denver</button>
+                <button class="btn btn-secondary" value="seattle">Seattle</button>
+                <button class="btn btn-secondary" value="san fransisco">San Fransisco</button>
+                <button class="btn btn-secondary" value="orlando">Orlando</button>
+                <button class="btn btn-secondary" value="new york">New York</button>
+                <button class="btn btn-secondary" value="chicago">Chicago</button>
+                <button class="btn btn-secondary" value="austin">Austin</button>
+
+            </div>
+
+            <div class="results col-9">
+                <div class="resultsDiv">
+
+                </div>
+                <br>
+                <h3 class="forecastDiv">5-Day Forecast</h3>
+            </div>
+
+        </div>
+    </div>
+    <script src="./Assets/script.js"></script>
+</body>
+
+</html>

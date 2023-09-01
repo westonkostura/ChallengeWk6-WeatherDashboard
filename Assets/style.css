@@ -1,0 +1,30 @@
+nav {
+    padding: 5px;
+    align-items: center;
+    /* font-family: ; */
+    background-color: cyan;
+    
+}
+nav h1 {
+    font-size: 45px;
+    text-align: right;
+    font-weight: 100;
+}
+.search {
+    border: 1px solid black;
+}
+.results {
+    border: 1px solid blue;
+    background-color: lightgray;
+}
+.resultsDiv {
+    border: 1px solid black;
+    width: 600px;
+    height: 200px;
+}
+
+@media screen and (max-width: 768px) {
+body {
+    background-color: red;
+}
+}
