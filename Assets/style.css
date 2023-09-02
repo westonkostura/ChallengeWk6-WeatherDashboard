@@ -23,6 +23,10 @@ nav h1 {
     height: 200px;
 }
 
+.resultsDiv h4 {
+    font-size: 20px;
+}
+
 @media screen and (max-width: 768px) {
 body {
     background-color: red;
