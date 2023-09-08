@@ -3,8 +3,21 @@ const resultsDiv = document.querySelector(".resultsDiv");
 const searchButton = document.querySelector("#searchButton");
 const buttons = document.querySelectorAll("#cityButton");
 const forecastDiv = document.querySelector("#forecast");
+const historyButton = document.querySelector("#historyButton");
 
 function currentTemp(citySearch) {
+  let storedCitySearches =
+    JSON.parse(localStorage.getItem("citySearches")) || [];
+
+  // Check if citySearch is already in the array
+  if (!storedCitySearches.includes(citySearch)) {
+    // Add the citySearch value to the array
+    storedCitySearches.push(citySearch);
+
+    // Store the updated array in localStorage
+    localStorage.setItem("citySearches", JSON.stringify(storedCitySearches));
+  }
+
   var geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearch}&limit=1&appid=5374478132da73a36e88a12d794d02f9`;
   console.log(geocodeUrl);
 
@@ -34,23 +47,14 @@ function currentTemp(citySearch) {
           var wind = data.list[0].wind.speed;
           var humidity = data.list[0].main.humidity;
 
-          function capitalizeWords(str) {
-            const words = str.split(" ");
-            const capitalizedWords = words.map((word) => {
-              const firstLetter = word.charAt(0).toUpperCase();
-              const restOfWord = word.slice(1);
-              return firstLetter + restOfWord;
-            });
-            const capitalizedStr = capitalizedWords.join(" ");
-            return capitalizedStr;
-          }
-
-          var weatherIcon = document.createElement('img');
+          var weatherIcon = document.createElement("img");
           var icon = data.list[0].weather[0].icon;
-          weatherIcon.setAttribute('src', "https://openweathermap.org/img/w/" + icon + ".png");
-          weatherIcon.setAttribute('alt', 'weather icon')
+          weatherIcon.setAttribute(
+            "src",
+            "https://openweathermap.org/img/w/" + icon + ".png"
+          );
+          weatherIcon.setAttribute("alt", "weather icon");
           resultsDiv.appendChild(weatherIcon);
-
 
           var fixedCurrentDate = date.split(" ");
           var cityEl = document.createElement("h4");
@@ -78,15 +82,18 @@ function currentTemp(citySearch) {
             var windfuture = data.list[i].wind.speed;
             var humidityfuture = data.list[i].main.humidity;
 
-            var weatherIconfuture = document.createElement('img');
+            var weatherIconfuture = document.createElement("img");
             var iconfuture = data.list[i].weather[0].icon;
-            weatherIconfuture.setAttribute('src', "https://openweathermap.org/img/w/" + iconfuture + ".png");
-            weatherIconfuture.setAttribute('alt', 'weather icon')
-            
+            weatherIconfuture.setAttribute(
+              "src",
+              "https://openweathermap.org/img/w/" + iconfuture + ".png"
+            );
+            weatherIconfuture.setAttribute("alt", "weather icon");
+
             var forecast = document.createElement("div");
-            forecast.setAttribute('class', 'forecastDiv')
+            forecast.setAttribute("class", "forecastDiv");
             forecastDiv.appendChild(forecast);
-            
+
             var dateEls = document.createElement("p");
             var fixedDate = dateforecast.split(" ");
             dateEls.innerText = fixedDate[0];
@@ -108,6 +115,28 @@ function currentTemp(citySearch) {
         });
     });
 }
+function capitalizeWords(str) {
+  const words = str.split(" ");
+  const capitalizedWords = words.map((word) => {
+    const firstLetter = word.charAt(0).toUpperCase();
+    const restOfWord = word.slice(1);
+    return firstLetter + restOfWord;
+  });
+  const capitalizedStr = capitalizedWords.join(" ");
+  return capitalizedStr;
+}
+
+historyButton.addEventListener("click", function () {
+  buttons.forEach((button, index) => {
+    button.value = "";
+    button.textContent = "";
+    var storedCitySearches = JSON.parse(localStorage.getItem("citySearches"));
+    var buttonValue = storedCitySearches[index];
+    var buttonText = storedCitySearches[index];
+    button.value = capitalizeWords(buttonValue.replace("%", " "));
+    button.textContent = capitalizeWords(buttonText.replace("%", " "));
+  });
+});
 
 buttons.forEach((button) => {
   button.addEventListener("click", function () {
@@ -126,9 +155,9 @@ searchButton.addEventListener("click", function () {
   currentTemp(city);
 });
 
-document.addEventListener('keydown', function(event,city) {
-  if (event.key === 'Enter') {
+document.addEventListener("keydown", function (event, city) {
+  if (event.key === "Enter") {
     var city = citySearch.value;
     currentTemp(city);
   }
-})
+});
