@@ -23,9 +23,9 @@ nav h1 {
 .resultsDiv {
     border: 1px solid black;
     width: 100%;
-    height: 200px;
+    height: 1-00%;
     background-color: white;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .resultsDiv h4 {
@@ -40,7 +40,9 @@ nav h1 {
 
 #forecast div {
     border: 1px solid black;
-    width: 200px
+    width: 100%;
+    background-color: darkblue;
+    color: white;
 }
 
 .search button {
@@ -58,6 +60,7 @@ nav h1 {
     /* bottom: 0; */
     z-index: -1;
 }
+
 
 .forecastHeader {
     text-align: center;
@@ -77,6 +80,9 @@ footer {
 @media screen and (max-width: 768px) {
     .resultsDiv {
         text-align: center;
+    }
+    #forecast {
+        flex-flow: column nowrap;
     }
     
 }
