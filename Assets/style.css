@@ -16,19 +16,67 @@ nav h1 {
 .results {
     border: 1px solid blue;
     background-color: lightgray;
+    justify-content: center;
+    padding: 10px;
+    
 }
 .resultsDiv {
     border: 1px solid black;
-    width: 600px;
+    width: 100%;
     height: 200px;
+    background-color: white;
+    padding: 10px;
 }
 
 .resultsDiv h4 {
     font-size: 20px;
 }
 
-@media screen and (max-width: 768px) {
-body {
-    background-color: red;
+#forecast {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
 }
+
+#forecast div {
+    border: 1px solid black;
+    width: 200px
+}
+
+.search button {
+    margin: 10px 0;
+}
+
+#background-video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    /* left: 0; */
+    /* right: 0; */
+    /* top: 0; */
+    /* bottom: 0; */
+    z-index: -1;
+}
+
+.forecastHeader {
+    text-align: center;
+}
+
+.searchHeader {
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .resultsDiv {
+        text-align: center;
+    }
+    
 }
